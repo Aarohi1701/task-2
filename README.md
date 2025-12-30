@@ -1,737 +1,176 @@
-# task-2
+#task 2 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aarohi Tapas | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto+Mono:wght@300;400&display=swap" rel="stylesheet">
-    
-    <style>
-        /* ===== CSS Reset & Base Styles ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aarohi Tapas | Portfolio</title>
 
-        :root {
-            /* Custom Color Scheme */
-            --primary-color: #4a6fa5;
-            --secondary-color: #166088;
-            --accent-color: #ff7e5f;
-            --light-color: #f8f9fa;
-            --dark-color: #343a40;
-            --text-color: #333;
-            --text-light: #666;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-        /* ===== Typography ===== */
-        body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--light-color);
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        h1, h2, h3, h4 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--secondary-color);
-        }
+:root {
+    --accent: #ff7e5f;
+    --bg: #f8f9fa;
+    --text: #333;
+    --card: #ffffff;
+}
 
-        h1 {
-            font-size: 2.5rem;
-            background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+body.dark-mode {
+    --bg: #121212;
+    --text: #eaeaea;
+    --card: #1e1e1e;
+}
 
-        h2 {
-            font-size: 2rem;
-            border-bottom: 3px solid var(--accent-color);
-            padding-bottom: 0.5rem;
-            display: inline-block;
-        }
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: 0.3s;
+}
 
-        h3 {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-        }
+header {
+    background: var(--card);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        p {
-            margin-bottom: 1rem;
-            color: var(--text-light);
-        }
+nav ul {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+}
 
-        /* ===== Layout - CSS Grid & Flexbox ===== */
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+nav a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 600;
+}
 
-        /* Header - Using Flexbox */
-        header {
-            background-color: white;
-            box-shadow: var(--shadow);
-            padding: 1rem 2rem;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+.button {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.4rem;
+    border-radius: 20px;
+    cursor: pointer;
+}
 
-        header > div {
-            flex: 1;
-        }
+main {
+    max-width: 1100px;
+    margin: auto;
+    padding: 2rem;
+    display: grid;
+    gap: 2rem;
+}
 
-        header nav {
-            flex: 2;
-        }
+section {
+    background: var(--card);
+    padding: 2rem;
+    border-radius: 10px;
+}
 
-        /* Main content grid layout */
-        main {
-            flex: 1;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 3rem;
-            padding: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            width: 100%;
-        }
+#galleryImage {
+    width: 100%;
+    border-radius: 10px;
+    transition: opacity 0.4s;
+}
 
-        /* Skills section - CSS Grid */
-        #skills {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
 
-        /* Projects section - Flexbox */
-        #projects {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
-        }
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+}
 
-        #projects article {
-            flex: 1 1 300px;
-            max-width: 400px;
-        }
+.message {
+    margin-top: 10px;
+    font-weight: bold;
+}
 
-        /* Contact section - Grid */
-        #contact {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
+.error { color: red; }
+.success { color: green; }
 
-        /* ===== Navigation Styles ===== */
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: flex-end;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--dark-color);
-            font-weight: 600;
-            font-size: 1.1rem;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: var(--transition);
-        }
-
-        /* ===== Button & Link Hover Effects ===== */
-        /* Selector 1: Element + Pseudo-class */
-        nav a:hover {
-            background-color: var(--primary-color);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: var(--shadow);
-        }
-
-        /* Selector 2: Class selector for buttons */
-        .button {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: white;
-            padding: 0.8rem 2rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-            text-align: center;
-        }
-
-        .button:hover {
-            background-color: var(--secondary-color);
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Selector 3: ID selector + Child combinator */
-        #contactForm button[type="submit"]:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-2px);
-        }
-
-        #contactForm button[type="reset"]:hover {
-            background-color: var(--text-light);
-            transform: translateY(-2px);
-        }
-
-        /* ===== Section Styles ===== */
-        section {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Selector 4: Attribute selector for images */
-        img[alt*="Aarohi"], img[alt*="working"] {
-            border-radius: 10px;
-            border: 5px solid var(--primary-color);
-            transition: var(--transition);
-            max-width: 100%;
-            height: auto;
-        }
-
-        img[alt*="Aarohi"]:hover, img[alt*="working"]:hover {
-            transform: scale(1.02);
-        }
-
-        /* ===== Form Styles ===== */
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        fieldset {
-            border: 2px solid var(--primary-color);
-            border-radius: 8px;
-            padding: 1.5rem;
-        }
-
-        legend {
-            padding: 0 1rem;
-            font-weight: 600;
-            color: var(--secondary-color);
-        }
-
-        input, textarea, select {
-            width: 100%;
-            padding: 0.8rem;
-            border: 2px solid #ddd;
-            border-radius: 4px;
-            font-family: 'Poppins', sans-serif;
-            transition: var(--transition);
-        }
-
-        input:focus, textarea:focus, select:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.2);
-        }
-
-        /* ===== Footer Styles ===== */
-        footer {
-            background-color: var(--dark-color);
-            color: white;
-            padding: 2rem;
-            text-align: center;
-            margin-top: 3rem;
-        }
-
-        footer nav ul {
-            justify-content: center;
-            margin: 1rem 0;
-        }
-
-        footer a {
-            color: white;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        footer a:hover {
-            color: var(--accent-color);
-        }
-
-        /* ===== Responsive Design for Mobile Screens ===== */
-        @media (max-width: 768px) {
-            /* Mobile Navigation */
-            header {
-                flex-direction: column;
-                text-align: center;
-                padding: 1rem;
-            }
-            
-            nav ul {
-                justify-content: center;
-                gap: 1rem;
-                margin-top: 1rem;
-            }
-            
-            /* Adjust grid layouts for mobile */
-            main {
-                padding: 1rem;
-                gap: 2rem;
-            }
-            
-            #skills {
-                grid-template-columns: 1fr;
-            }
-            
-            #contact {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            /* Adjust typography for mobile */
-            h1 {
-                font-size: 2rem;
-            }
-            
-            h2 {
-                font-size: 1.5rem;
-            }
-            
-            /* Stack form elements */
-            form > div {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            
-            /* Mobile-specific hover adjustments */
-            .button:hover {
-                transform: scale(1.02);
-            }
-        }
-
-        @media (max-width: 480px) {
-            /* Extra small devices */
-            body {
-                font-size: 0.9rem;
-            }
-            
-            section {
-                padding: 1rem;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            #projects article {
-                flex: 1 1 100%;
-            }
-        }
-
-        /* ===== Additional Selectors & Effects ===== */
-        /* Selector 5: Adjacent sibling selector */
-        h2 + p {
-            font-size: 1.1rem;
-            color: var(--primary-color);
-            margin-top: -0.5rem;
-        }
-
-        /* Selector 6: :nth-child pseudo-class */
-        ul li:nth-child(odd) {
-            background-color: rgba(74, 111, 165, 0.1);
-            padding-left: 0.5rem;
-            border-radius: 4px;
-        }
-
-        /* Hover effect for social links */
-        #contact ul li a:hover {
-            color: var(--accent-color);
-            padding-left: 5px;
-        }
-
-        /* Skill list items with hover */
-        #skills li {
-            padding: 0.5rem;
-            margin: 0.3rem 0;
-            border-left: 3px solid var(--primary-color);
-            transition: var(--transition);
-        }
-
-        #skills li:hover {
-            background-color: rgba(255, 126, 95, 0.1);
-            padding-left: 1rem;
-            border-left-color: var(--accent-color);
-        }
-
-        /* Form button styling */
-        #contactForm button {
-            margin: 0.5rem;
-            padding: 0.8rem 1.5rem;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        /* ClearForm button specific styling */
-        button[type="reset"] {
-            background-color: #6c757d !important;
-        }
-
-        button[type="reset"]:hover {
-            background-color: #5a6268 !important;
-        }
-
-        /* ===== Animation Effects ===== */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        section {
-            animation: fadeIn 0.5s ease-out;
-        }
-
-        /* ===== Utility Classes ===== */
-        .skill-category {
-            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(248,249,250,0.9));
-            padding: 1.5rem;
-            border-radius: 8px;
-        }
-
-        .project-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            border: 1px solid #e9ecef;
-        }
-
-        .contact-info {
-            background: linear-gradient(135deg, var(--light-color), white);
-            padding: 1.5rem;
-            border-radius: 8px;
-        }
-
-        /* ===== Accessibility Improvements ===== */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-
-        /* Focus styles for accessibility */
-        a:focus, button:focus, input:focus, textarea:focus, select:focus {
-            outline: 3px solid var(--accent-color);
-            outline-offset: 2px;
-        }
-    </style>
+footer {
+    background: #166088;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+</style>
 </head>
+
 <body>
-    <!-- Header with Navigation -->
-    <header>
-        <div>
-            <h1>Aarohi Tapas</h1>
-            <p>Web Developer</p>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Home Section -->
-        <section id="home">
-            <h2>Welcome to My Portfolio</h2>
-            <figure>
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                     alt="Aarohi Tapas - Web Developer" width="300" height="300">
-                <figcaption>Aarohi Tapas - Web Developer</figcaption>
-            </figure>
-            <p>I create responsive, user-friendly websites and applications with modern technologies.</p>
-            <a href="#contact" class="button">Get In Touch</a>
-        </section>
+<header>
+    <h1>Aarohi Tapas</h1>
 
-        <!-- About Section -->                                          
-        <section id="about">
-            <h2>About Me</h2>
-            <article>
-                <h3>Hello! I'm Aarohi Tapas</h3>
-                <figure>
-                    <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                         alt="Aarohi Tapas working on laptop" width="400" height="300">
-                    <figcaption>Working on web development projects</figcaption>
-                </figure>
-                <p>I'm a passionate web developer with over 7 months of experience creating digital solutions for businesses and individuals.</p>
-                <p>My journey in web development started during my Information Technology degree, and I've been hooked ever since.</p>
-                
-                <h4>Education</h4>
-                <ul>
-                    <li><strong>Bachelor of technology in IT</strong> - Priyadarshini college of Engineering (2021-2024)</li>
-                </ul>
-                
-                <h4>Experience</h4>
-                <ul>
-                    <li><strong> Frontend Developer Intern</strong> at Hats off Private limited. (2024)</li>
-                    <li><strong> Web Developer</strong> at Sai Compyusys Private limited (2023)</li>
-                </ul>
-            </article>
-        </section>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#todo">To-Do</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-        <!-- Skills Section -->
-        <section id="skills">
-            <h2>My Skills</h2>
-            
-            <article class="skill-category">
-                <h3>Frontend Development</h3>
-                <ul>
-                    <li>HTML5 - Expert</li>
-                    <li>CSS3 - Advanced</li>
-                    <li>JavaScript - Advanced</li>
-                    <li>React - Intermediate</li>
-                    <li>Responsive Design - Expert</li>
-                </ul>
-            </article>
-            
-            <article class="skill-category">
-                <h3>Backend Development</h3>
-                <ul>
-                    <li>Node.js - Advanced</li>
-                    <li>Express.js - Intermediate</li>
-                    <li>MongoDB - Intermediate</li>
-                    <li>REST APIs - Advanced</li>
-                    <li>Python - Basic</li>
-                </ul>
-            </article>
-            
-            <article class="skill-category">
-                <h3>Tools & Others</h3>
-                <ul>
-                    <li>Git & GitHub - Advanced</li>
-                    <li>VS Code - Expert</li>
-                    <li>Figma - Intermediate</li>
-                    <li>Web Performance - Intermediate</li>
-                    <li>SEO - Basic</li>
-                </ul>
-            </article>
-            
-            <aside class="skill-category">
-                <h4>Certifications</h4>
-                <ul>
-                    <li>Google Mobile Web Specialist</li>
-                    <li>AWS Certified Developer Associate</li>
-                    <li>Scrum Master Certification</li>
-                </ul>
-            </aside>
-        </section>
+    <button class="button" onclick="toggleDarkMode()">🌙 Mode</button>
+</header>
 
-        <!-- Projects Section -->
-        <section id="projects">
-            <h2>Recent Projects</h2>
-            <article class="project-card">
-                <h3>E-Commerce Website</h3>
-                <p>A full-featured online store with shopping cart and payment integration.</p>
-                <p><strong>Technologies:</strong> HTML, CSS, Bootstrap, React, Node.js</p>
-            </article>
-            
-            <article class="project-card">
-                <h3>Portfolio Website Template</h3>
-                <p>A responsive portfolio template for creative professionals.</p>
-                <p><strong>Technologies:</strong> HTML5, CSS3, JavaScript</p>
-            </article>
-            
-            <article class="project-card">
-                <h3>Task Management App</h3>
-                <p>A collaborative task management application with real-time updates.</p>
-                <p><strong>Technologies:</strong> Vue.js, Node.js, MongoDB</p>
-            </article>
-        </section>
+<main>
 
-        <!-- Contact Section -->
-        <section id="contact">
-            <div class="contact-info">
-                <h2>Contact Me</h2>
-                <h3>Get In Touch</h3>
-                <p>I'm currently available for freelance work and full-time opportunities.</p>
-                
-                <address>
-                    <p><strong>Location:</strong> Pune Maharashtra</p>
-                    <p><strong>Email:</strong> <a href="mailto:aarohiitapas17@gmail.com">aarohiitapas17@gmail.com</a></p>
-                    <p><strong>Phone:</strong> <a href="tel:+919309804210">+919309804210</a></p>
-                </address>
-                
-                <h4>Social Media</h4>
-                <ul>
-                    <li><a href="https://github.com" target="_blank">GitHub</a></li>
-                    <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
-                    <li><a href="https://twitter.com" target="_blank">Twitter</a></li>
-                </ul>
-            </div>
-            
-            <div>
-                <h3>Send Me a Message</h3>
-                <form id="contactForm" action="#" method="post">
-                    <fieldset>
-                        <legend>Contact Form</legend>
-                        
-                        <div>
-                            <label for="name">Your Name:</label>
-                            <input type="text" id="name" name="name" placeholder="Enter your name" required>
-                        </div>
-                        
-                        <div>
-                            <label for="email">Your Email:</label>
-                            <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                        </div>
-                        
-                        <div>
-                            <label for="subject">Subject:</label>
-                            <input type="text" id="subject" name="subject" placeholder="Enter subject" required>
-                        </div>
-                        
-                        <div>
-                            <label for="message">Your Message:</label>
-                            <textarea id="message" name="message" placeholder="Enter your message" rows="6" required></textarea>
-                        </div>
-                        
-                        <div>
-                            <label for="contact-method">Preferred Contact Method:</label>
-                            <select id="contact-method" name="contact-method">
-                                <option value="email">Email</option>
-                                <option value="phone">Phone</option>
-                            </select>
-                        </div>
-                        
-                        <div>
-                            <label>
-                                <input type="checkbox" name="newsletter" checked>
-                                Subscribe to newsletter
-                            </label>
-                        </div>
-                        
-                        <div>
-                            <button type="submit" class="button">Send Message</button>
-                            <button type="reset" class="button">Clear Form</button>
-                        </div>
-                    </fieldset>
-                </form>
-            </div>
-        </section>
-    </main>
+<section id="home">
+    <h2>Welcome</h2>
+    <p id="introText">I build modern and interactive web applications.</p>
+    <button class="button" onclick="toggleContent()">Show / Hide Text</button>
+</section>
 
-    <!-- Footer -->
-    <footer>
-        <div>
-            <p>&copy; 2025 Aarohi Tapas. All rights reserved.</p>
-            <p>Portfolio Website | Built with HTML5 & CSS3</p>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <p><a href="#home" class="button">Back to Top</a></p>
-        </div>
-    </footer>
+<section id="projects">
+    <h2>Image Slider</h2>
+    <img id="galleryImage" src="">
+    <br><br>
+    <button class="button" onclick="prevImage()">⬅ Prev</button>
+    <button class="button" onclick="nextImage()">Next ➡</button>
+</section>
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('nav a, footer a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                if(this.getAttribute('href').startsWith('#')) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if(targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                }
-            });
-        });
+<section id="todo">
+    <h2>To-Do List</h2>
+    <input type="text" id="todoInput" placeholder="Add task">
+    <button class="button" onclick="addTodo()">Add</button>
+    <div id="todoList"></div>
+</section>
 
-        // Form submission handling
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            
-            // In a real application, you would send this data to a server
-            // For now, just show an alert
-            alert(`Thank you ${name}! Your message has been sent. I'll contact you at ${email} soon.`);
-            
-            // Reset form
-            this.reset();
-        });
+<section id="contact">
+    <h2>Contact Me</h2>
+    <form onsubmit="validateForm(event)">
+        <input type="email" id="email" placeholder="Email">
+        <textarea id="message" placeholder="Message"></textarea>
+        <button class="button">Send</button>
+        <div id="formMessage" class="message"></div>
+    </form>
+</section>
 
-        // Add hover effect to project cards
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-10px)';
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0)';
-            });
-        });
+</main>
 
-        // Dynamic year in footer
-        document.querySelector('footer p:first-child').innerHTML = 
-            `&copy; ${new Date().getFullYear()} Aarohi Tapas. All rights reserved.`;
-    </script>
+<footer>
+    <p id="year"></p>
+</footer>
+
+<!-- ✅ External JavaScript -->
+<script src="Script js.js"></script>
+
 </body>
 </html>
-
